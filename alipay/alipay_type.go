@@ -3,7 +3,7 @@ package alipay
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/alipay-mainland-go/ngx"
+	"github.com/smartwalle/ngx"
 	"io"
 )
 

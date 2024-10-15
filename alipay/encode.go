@@ -2,7 +2,7 @@ package alipay
 
 import (
 	"bytes"
-	"github.com/alipay-mainland-go/nsign"
+	"github.com/smartwalle/nsign"
 	"net/url"
 	"sort"
 	"strings"

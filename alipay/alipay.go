@@ -10,6 +10,9 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
+	"github.com/smartwalle/ncrypto"
+	"github.com/smartwalle/ngx"
+	"github.com/smartwalle/nsign"
 	"io"
 	"net/http"
 	"net/url"
@@ -17,10 +20,6 @@ import (
 	"strings"
 	"sync"
 	"time"
-
-	"github.com/alipay-mainland-go/ncrypto"
-	"github.com/alipay-mainland-go/ngx"
-	"github.com/alipay-mainland-go/nsign"
 )
 
 var (

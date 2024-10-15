@@ -1,6 +1,7 @@
 package alipay_test
 
 import (
+	"alipay"
 	"testing"
 )
 
