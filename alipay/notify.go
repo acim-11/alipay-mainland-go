@@ -3,6 +3,7 @@ package alipay
 import (
 	"context"
 	"errors"
+	"fmt"
 	"io"
 	"net/http"
 	"net/url"
@@ -97,6 +98,28 @@ func (c *Client) DecodeNotification(values url.Values) (notification *Notificati
 	notification.DBackStatus = values.Get("dback_status")
 	notification.DBackAmount = values.Get("dback_amount")
 	notification.BankAckTime = values.Get("bank_ack_time")
+	return notification, err
+}
+
+func (c *Client) DecodeFundAuthNotification(values url.Values) (notification *FundAuthNotification, err error) {
+	if err = c.VerifySign(values); err != nil {
+		return nil, err
+	}
+
+	notification = &FundAuthNotification{}
+
+	//反射遍历写入数据
+	for key, value := range values {
+		if len(value) > 0 {
+			err := SetField(&notification, key, value[0])
+			if err != nil {
+				fmt.Println(err)
+				continue
+			}
+		}
+	}
+
+	//返回
 	return notification, err
 }
 

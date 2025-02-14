@@ -10,9 +10,6 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"errors"
-	"github.com/smartwalle/ncrypto"
-	"github.com/smartwalle/ngx"
-	"github.com/smartwalle/nsign"
 	"io"
 	"net/http"
 	"net/url"
@@ -20,6 +17,10 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/smartwalle/ncrypto"
+	"github.com/smartwalle/ngx"
+	"github.com/smartwalle/nsign"
 )
 
 var (
@@ -344,6 +345,7 @@ func (c *Client) URLValues(param Param) (value url.Values, err error) {
 	}
 
 	var content = string(jsonBytes)
+
 	if content != kEmptyBizContent {
 		if c.needEncrypt && param.NeedEncrypt() {
 			jsonBytes, err = ncrypto.AESCBCEncrypt(jsonBytes, c.encryptKey, c.encryptIV, c.encryptPadding)
